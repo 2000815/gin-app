@@ -8,6 +8,11 @@ RUN go mod download
 
 COPY main.go ./
 
+# Install air
+RUN go install github.com/air-verse/air
+
+COPY .air.toml ./
+
 EXPOSE 8080
 
-CMD ["go", "run", "main.go"]
+CMD ["air", "-c"]
