@@ -1,18 +1,29 @@
-version: "3.9"
+version: "3.8"
 
 services:
-  mysql:
-    image: mysql:5.7
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: mydatabase
-    ports:
-      - "3306:3306"
-  app:
+  go:
     build: .
-    depends_on:
-      - mysql
     ports:
       - "8080:8080"
-    command: ["air", "-c", ".air.toml"]
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=first
+    volumes:
+      - .:/app
+    command: ["air"]
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0.29
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: first
+    volumes:
+      - db-vol:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  db-vol:
