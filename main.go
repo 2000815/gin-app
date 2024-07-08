@@ -29,8 +29,6 @@ import (
 
 
 func main() {
-    fmt.Println("こちらテストです")
-
     router := controller.GetRouter()
 
     // サーバーを起動

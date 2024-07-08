@@ -2,6 +2,7 @@ package utility
 
 import (
 	"fmt"
+	"my-go-app/model"
 	"os"
 	"time"
 
@@ -20,6 +21,10 @@ func init() {
 	var err error
 	if Db, err = gorm.Open(dialector); err != nil {
 		connect(dialector, 100)
+	}
+
+	if err := Db.AutoMigrate(&model.Event{}); err != nil {
+			panic(err)
 	}
 	fmt.Println("db connected!!")
 }

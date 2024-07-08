@@ -6,7 +6,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-type event struct {
+type Event struct {
 	gorm.Model
 	Id          int    `json:id`
 	UserId     int    `json:user_id`
@@ -19,7 +19,7 @@ type event struct {
 	Day         int    `json:day`
 }
 
-func GetAll() (datas []event) {
+func GetAll() (datas []Event) {
 	db := utility.Db
 	result := db.Find(&datas)
 	if result.Error != nil {
