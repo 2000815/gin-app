@@ -3,6 +3,7 @@ package utility
 import (
 	"fmt"
 	"my-go-app/model"
+
 	"os"
 	"time"
 
@@ -12,7 +13,7 @@ import (
 
 var Db *gorm.DB
 
-func init() {
+func Init() {
 	user := os.Getenv("MYSQL_USER")
 	pw := os.Getenv("MYSQL_PASSWORD")
 	db_name := os.Getenv("MYSQL_DATABASE")

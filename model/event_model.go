@@ -1,8 +1,6 @@
 package model
 
 import (
-	"my-go-app/utility"
-
 	"github.com/jinzhu/gorm"
 )
 
@@ -19,11 +17,11 @@ type Event struct {
 	Day         int    `json:day`
 }
 
-func GetAll() (datas []Event) {
-	db := utility.Db
-	result := db.Find(&datas)
-	if result.Error != nil {
-		panic(result.Error)
-	}
-	return
-}
+// func GetAll(events []Event) (datas []Event) {
+
+// 	result :=
+// 	if result.Error != nil {
+// 		panic(result.Error)
+// 	}
+// 	return
+// }

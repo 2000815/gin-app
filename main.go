@@ -3,7 +3,10 @@ package main
 import (
 	"fmt"
 	"my-go-app/controller"
+	"my-go-app/utility"
+	"os"
 
+	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
@@ -29,7 +32,11 @@ import (
 
 
 func main() {
+    mode := os.Getenv("GIN_MODE")
+    gin.SetMode(mode)
     router := controller.GetRouter()
+
+    utility.Init()
 
     // サーバーを起動
     if err := router.Run(":8080"); err != nil {

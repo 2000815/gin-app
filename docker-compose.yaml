@@ -9,6 +9,7 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=
       - MYSQL_DATABASE=first
+      - GIN_MODE=release
     volumes:
       - .:/app
     command: ["air"]
