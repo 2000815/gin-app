@@ -6,6 +6,6 @@ import (
 
 func GetRouter() *gin.Engine {
 	r := gin.Default()
-	r.GET("/", ShowAllBlog)
+	r.GET("/", GetAll)
 	return r
 }

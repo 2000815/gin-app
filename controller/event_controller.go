@@ -3,11 +3,13 @@ package controller
 import (
 	"my-go-app/model"
 	"my-go-app/utility"
+	"my-go-app/view"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-func ShowAllBlog(c *gin.Context) {
+func GetAll(c *gin.Context) {
 	var events []model.Event
 	result := utility.Db.Find(&events)
 	if result.Error != nil {
@@ -15,11 +17,11 @@ func ShowAllBlog(c *gin.Context) {
 		return
 	}
 
-	// データが空の場合の処理を追加する
 	if len(events) == 0 {
 		c.JSON(200, gin.H{"message": "データが見つかりません"})
 		return
 	}
 
-	c.JSON(200, gin.H{"datas": events})
+	jsonData := view.ProcessEvents(events)
+	c.JSON(http.StatusOK, jsonData)
 }

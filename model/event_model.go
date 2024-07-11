@@ -16,12 +16,3 @@ type Event struct {
 	Month       int    `json:month`
 	Day         int    `json:day`
 }
-
-// func GetAll(events []Event) (datas []Event) {
-
-// 	result :=
-// 	if result.Error != nil {
-// 		panic(result.Error)
-// 	}
-// 	return
-// }
